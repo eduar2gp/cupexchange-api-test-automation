@@ -1,0 +1,33 @@
+# Maven build system
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IDEA configuration files
+.idea/
+*.iml
+*.iws
+
+# Eclipse files
+.project
+.classpath
+.settings/
+.factorypath
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+
+# Environment and configuration files (contains sensitive or local overrides)
+config.properties
+config-*.properties
+
+# Output and build directories
+test-output/
+bin/
+out/
+
+# Temporary and local data files
+temp/
