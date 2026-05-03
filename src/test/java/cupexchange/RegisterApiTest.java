@@ -1,51 +1,35 @@
 package cupexchange;
 
+import com.aventstack.extentreports.Status;
 import constants.Endpoints;
-import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import model.LoginRequest;
-import model.LoginResponse;
-import model.RegisterRequest;
-import model.RegisterResponse;
+import model.*;
 import net.datafaker.Faker;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import util.SimpleDataGenerator;
 
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class RegisterApiTest {
+public class RegisterApiTest extends BaseTest {
+
+    private static final Logger logger = LoggerFactory.getLogger(RegisterApiTest.class);
 
     private static String generatedUsername;
     private static String generatedPassword;
     private static final Faker faker = new Faker();
-    static final String config = "config.properties";
-
-    @BeforeAll
-    public static void setup() {
-        Properties properties = new Properties();
-        // 1. Load the properties file from src/test/resources
-        try (InputStream input = Files.newInputStream(Paths.get("src/test/resources/"+config))) {
-            properties.load(input);
-            // 2. Set the base URI dynamically, using a fallback default if property is missing
-            RestAssured.baseURI = properties.getProperty("api.url", "");
-        } catch (Exception e) {
-            System.err.println("CRITICAL: Failed to load configuration file. Using default settings.");
-        }
-    }
 
     @Test
     @Order(1)
     public void registerAndVerifyUser() {
+        test.set(extent.createTest("registerAndVerifyUser"));
+
         String token = null;
         // 2. Generate random credentials and save them for the next test
         generatedUsername = faker.name().firstName() + SimpleDataGenerator.getRandomString(3);
@@ -70,16 +54,22 @@ public class RegisterApiTest {
                 .extract()
                 .as(RegisterResponse.class);
 
+        test.get().log(Status.PASS, "Register test passed successfully.");
+
         // 4. Retrieve Verification Token from DB
         try (Connection conn = DatabaseConfig.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT * FROM verificationtoken ORDER BY expirydate DESC FETCH FIRST 1 ROWS ONLY")) {
             if (rs.next()) {
+                System.out.println("there is data");
                 token = rs.getString("token");
-                System.out.println("Token: " + token);
+                logger.info("Successfully retrieved token: {}", token);
+            }
+            else{
+                System.out.println("no more");
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Failed to retrieve verification token from the database", e);
         }
 
         if (token == null) {
@@ -94,11 +84,14 @@ public class RegisterApiTest {
                 .then()
                 .log().body()
                 .statusCode(200);
+
+        test.get().log(Status.PASS, "Verify test passed successfully.");
     }
 
     @Test
     @Order(2)
     public void loginNewUser() {
+        test.set(extent.createTest("loginNewUser"));
         // 2. Build the Login Request using the saved fields from Test 1
         LoginRequest request = new LoginRequest();
         request.setUsername(generatedUsername);
@@ -118,6 +111,9 @@ public class RegisterApiTest {
                 .extract()
                 .as(LoginResponse.class);
 
+        UserVerificationTest.setJwtToken(response.getJwtToken());
         System.out.println("Token: " + response.getJwtToken());
+        test.get().log(Status.PASS, "Login test passed successfully.");
     }
+
 }

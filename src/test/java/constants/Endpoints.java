@@ -9,4 +9,5 @@ public class Endpoints {
     public static final String LOGIN = "/api/v1/auth/login";
     public static final String REGISTER = "/api/v1/auth/register";
     public static final String VERIFY = "/api/v1/auth/verify?code=";
+    public static final String CREATE_WALLET = "/api/v1/wallet/add";
 }
