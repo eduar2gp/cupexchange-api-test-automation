@@ -1,3 +1,5 @@
+package cupexchange;
+
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
