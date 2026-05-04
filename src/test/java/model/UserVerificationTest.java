@@ -2,13 +2,21 @@ package model;
 
 public class UserVerificationTest {
     private static String jwtToken;
-
+    private static Long userId;
     // Getter to access token in other classes
     public static String getJwtToken() {
         return jwtToken;
     }
 
+    public static Long getUserId(){
+        return userId;
+    }
+
     public static void setJwtToken(String jwtToken) {
         UserVerificationTest.jwtToken = jwtToken;
+    }
+
+    public static void setUserId(Long userId) {
+        UserVerificationTest.userId = userId;
     }
 }

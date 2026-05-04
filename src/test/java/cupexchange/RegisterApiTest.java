@@ -112,6 +112,7 @@ public class RegisterApiTest extends BaseTest {
                 .as(LoginResponse.class);
 
         UserVerificationTest.setJwtToken(response.getJwtToken());
+        UserVerificationTest.setUserId(response.getId());
         System.out.println("Token: " + response.getJwtToken());
         test.get().log(Status.PASS, "Login test passed successfully.");
     }
