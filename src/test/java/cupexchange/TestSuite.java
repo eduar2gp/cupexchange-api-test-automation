@@ -7,7 +7,8 @@ import org.junit.platform.suite.api.Suite;
 @SelectClasses({
         RegisterApiTest.class, // Runs first
         WalletApiTest.class,        // Runs second
-        DepositApiTest.class
+        DepositApiTest.class,
+        AccountApiTest.class
 })
 public class TestSuite {
     // This class remains empty and serves only as a container
