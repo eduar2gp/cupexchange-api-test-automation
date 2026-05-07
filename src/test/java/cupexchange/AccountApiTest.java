@@ -1,6 +1,5 @@
 package cupexchange;
 
-import com.aventstack.extentreports.Status;
 import constants.Endpoints;
 import io.restassured.http.ContentType;
 import model.*;
@@ -20,7 +19,6 @@ public class AccountApiTest extends BaseTest{
             throw new IllegalStateException("JWT Token is null. Ensure the login step runs first.");
         }
 
-        test.set(extent.createTest("addNewAccount"));
 
         NewAccountRequest request = new NewAccountRequest();
         request.setAccountName(UserVerificationTest.getFullName());
@@ -44,7 +42,6 @@ public class AccountApiTest extends BaseTest{
 
         System.out.println("Account ID: " + response.getId());
 
-        test.get().log(Status.PASS, "addNewAccount test passed successfully.");
     }
 
 }

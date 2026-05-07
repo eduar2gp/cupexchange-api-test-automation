@@ -1,6 +1,5 @@
 package cupexchange;
 
-import com.aventstack.extentreports.Status;
 import constants.Endpoints;
 import io.restassured.http.ContentType;
 import model.*;
@@ -20,8 +19,6 @@ public class DepositApiTest extends BaseTest{
             throw new IllegalStateException("JWT Token is null. Ensure the login step runs first.");
         }
 
-        test.set(extent.createTest("deposit"));
-
         DepositRequest request = new DepositRequest();
         request.setUserId(UserVerificationTest.getUserId());
         request.setProviderId(7L);
@@ -29,8 +26,6 @@ public class DepositApiTest extends BaseTest{
         request.setCurrencyCode("CUP");
         request.setType("DEPOSIT");
 
-
-        // 3. Execute Login
         DepositResponse response = given()
                 .log().all()
                 .header("Authorization", "Bearer " + token) // Added JWT Token
@@ -47,7 +42,5 @@ public class DepositApiTest extends BaseTest{
 
         System.out.println("Created At:" + response.getCreatedAt());
 
-        test.get().log(Status.PASS, "Deposit test passed successfully.");
     }
-
 }

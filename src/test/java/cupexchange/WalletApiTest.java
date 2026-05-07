@@ -1,6 +1,5 @@
 package cupexchange;
 
-import com.aventstack.extentreports.Status;
 import constants.Endpoints;
 import io.restassured.http.ContentType;
 import model.*;
@@ -14,9 +13,6 @@ public class WalletApiTest extends BaseTest {
     @Test
     @Order(3)
     public void createUsdCupWallet() {
-        test.set(extent.createTest("createUsdCupWallet"));
-        // 1. Retrieve the token saved from the previous login/registration step
-        // (Ensure your UserVerificationTest saves the token to a public static variable)
         String token = UserVerificationTest.getJwtToken();
 
         if (token == null) {
@@ -59,6 +55,5 @@ public class WalletApiTest extends BaseTest {
                 .as(NewWalletResponse.class);
 
         System.out.println("Currency Code: " + response.getCurrencyCode());
-        test.get().log(Status.PASS, "Create New Wallet test passed successfully.");
     }
 }

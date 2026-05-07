@@ -1,6 +1,5 @@
 package cupexchange;
 
-import com.aventstack.extentreports.Status;
 import constants.Endpoints;
 import io.restassured.http.ContentType;
 import model.*;
@@ -28,8 +27,6 @@ public class RegisterApiTest extends BaseTest {
     @Test
     @Order(1)
     public void registerAndVerifyUser() {
-        test.set(extent.createTest("registerAndVerifyUser"));
-
         String token = null;
         // 2. Generate random credentials and save them for the next test
         generatedUsername = faker.name().firstName() + SimpleDataGenerator.getRandomString(3);
@@ -53,8 +50,6 @@ public class RegisterApiTest extends BaseTest {
                 .statusCode(201)
                 .extract()
                 .as(RegisterResponse.class);
-
-        test.get().log(Status.PASS, "Register test passed successfully.");
 
         // 4. Retrieve Verification Token from DB
         try (Connection conn = DatabaseConfig.getConnection();
@@ -84,15 +79,11 @@ public class RegisterApiTest extends BaseTest {
                 .then()
                 .log().body()
                 .statusCode(200);
-
-        test.get().log(Status.PASS, "Verify test passed successfully.");
     }
 
     @Test
     @Order(2)
     public void loginNewUser() {
-        test.set(extent.createTest("loginNewUser"));
-        // 2. Build the Login Request using the saved fields from Test 1
         LoginRequest request = new LoginRequest();
         request.setUsername(generatedUsername);
         request.setPassword(generatedPassword);
@@ -115,7 +106,5 @@ public class RegisterApiTest extends BaseTest {
         UserVerificationTest.setUserId(response.getId());
         UserVerificationTest.setFullName(request.getUsername());
         System.out.println("Token: " + response.getJwtToken());
-        test.get().log(Status.PASS, "Login test passed successfully.");
     }
-
 }
