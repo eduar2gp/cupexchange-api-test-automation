@@ -5,11 +5,11 @@ import org.junit.platform.suite.api.Suite;
 
 @Suite
 @SelectClasses({
-        RegisterApiTest.class, // Runs first
-        WalletApiTest.class,        // Runs second
+        RegisterApiTest.class,
+        WalletApiTest.class,
         DepositApiTest.class,
         AccountApiTest.class
 })
 public class TestSuite {
-    // This class remains empty and serves only as a container
+
 }

@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class NewWalletResponse {
+public class WalletResponse {
     private Long walletId;
     private String currencyCode;
     private double balance;

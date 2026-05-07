@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class NewAccountRequest {
+public class AccountRequest {
 
     private String baseCurrency;
     private Integer paymentGatewayId;

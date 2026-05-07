@@ -19,7 +19,7 @@ public class DepositApiTest extends BaseTest{
             throw new IllegalStateException("JWT Token is null. Ensure the login step runs first.");
         }
 
-        DepositRequest request = new DepositRequest();
+        CashOrderDepositRequest request = new CashOrderDepositRequest();
         request.setUserId(UserVerificationTest.getUserId());
         request.setProviderId(7L);
         request.setAmount(1000);

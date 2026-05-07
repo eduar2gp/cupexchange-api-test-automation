@@ -19,11 +19,11 @@ public class WalletApiTest extends BaseTest {
             throw new IllegalStateException("JWT Token is null. Ensure the login step runs first.");
         }
 
-        NewWalletRequest newWalletRequest = new NewWalletRequest();
+        WalletRequest newWalletRequest = new WalletRequest();
         newWalletRequest.setCurrencyCode("USD");
 
         // 2. Execute the POST request with the Authorization header
-        NewWalletResponse response = given()
+        WalletResponse response = given()
                 .log().all()
                 .header("Authorization", "Bearer " + token) // Added JWT Token
                 .header("Accept", "application/json")
@@ -35,7 +35,7 @@ public class WalletApiTest extends BaseTest {
                 .log().all()
                 .statusCode(201)
                 .extract()
-                .as(NewWalletResponse.class);
+                .as(WalletResponse.class);
 
         System.out.println("Currency Code: " + response.getCurrencyCode());
         newWalletRequest.setCurrencyCode("CUP");
@@ -52,7 +52,7 @@ public class WalletApiTest extends BaseTest {
                 .log().all()
                 .statusCode(201)
                 .extract()
-                .as(NewWalletResponse.class);
+                .as(WalletResponse.class);
 
         System.out.println("Currency Code: " + response.getCurrencyCode());
     }

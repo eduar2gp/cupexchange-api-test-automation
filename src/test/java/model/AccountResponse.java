@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class NewAccountResponse {
+public class AccountResponse {
 
     private Long id;
     private String accountId;

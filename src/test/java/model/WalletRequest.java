@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class NewWalletRequest {
+public class WalletRequest {
 
     private String currencyCode;
 
