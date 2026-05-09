@@ -1,0 +1,38 @@
+package cupexchange;
+
+import constants.Endpoints;
+import io.restassured.http.ContentType;
+import model.ExchangeOrderRequest;
+import model.UserVerificationTest;
+import org.junit.jupiter.api.*;
+import java.math.BigDecimal;
+import static io.restassured.RestAssured.given;
+
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class ExchangeOrderApiTest extends BaseTest{
+
+    @Test
+    @Order(1)
+    public void createExchangeOrder() {
+        ExchangeOrderRequest request = new ExchangeOrderRequest();
+        request.setSide("BUY");
+        request.setPairCode("USDCUP");
+        request.setType("MARKET");
+        request.setVolume(new BigDecimal("10"));
+        request.setUsername(UserVerificationTest.getUserName().toLowerCase());
+
+        String response = given()
+                .header("Authorization", "Bearer " + UserVerificationTest.getJwtToken())
+                .contentType(ContentType.JSON)
+                .body(request)
+                .when()
+                .post(Endpoints.CREATE_EXCHANGE_ORDER)
+                .then()
+                .statusCode(201)
+                .extract()
+                .asString();
+
+        System.out.println(response);
+    }
+}

@@ -19,7 +19,7 @@ import java.util.Properties;
 @ExtendWith(TestResultWatcher.class)
 public class BaseTest {
 
-    static final String config = "config.properties";
+    static final String config = "config-prod.properties";
     static Properties properties = new Properties();
     public static ExtentReports extent;
     public static ThreadLocal<ExtentTest> test = new ThreadLocal<>();

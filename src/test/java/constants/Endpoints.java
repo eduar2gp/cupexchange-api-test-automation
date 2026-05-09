@@ -16,5 +16,8 @@ public class Endpoints {
     public static final String ADD_PAYMENT = "/api/v1/payment/add";
     public static final String ADD_RECEIPT = "/api/v1/payment/{ID}/receipt";
     public static final String DEPOSTI = "/api/v1/transaction/deposit";
-
+    public static final String GET_PENDING_DEPOSITS = "/api/v1/transaction/account-manager?page=0&size=10";
+    public static final String PROCESS_TRANSACTION = "/api/v1/transaction/admin/process";
+    public static final String ESTIMATE_ORDER_TOTAL_PRICE = "/api/v1/trade/estimate-market-order-total-price?volume={VOLUME}&side=BUY&pairCode=USDCUP";
+    public static final String CREATE_EXCHANGE_ORDER = "/api/v1/trade/order";
 }

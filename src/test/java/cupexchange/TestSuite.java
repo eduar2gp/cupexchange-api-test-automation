@@ -7,8 +7,9 @@ import org.junit.platform.suite.api.Suite;
 @SelectClasses({
         RegisterApiTest.class,
         WalletApiTest.class,
+        AccountApiTest.class,
         DepositApiTest.class,
-        AccountApiTest.class
+        ExchangeOrderApiTest.class
 })
 public class TestSuite {
 

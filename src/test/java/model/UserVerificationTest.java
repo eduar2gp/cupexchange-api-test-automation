@@ -13,7 +13,7 @@ public class UserVerificationTest {
         return userId;
     }
 
-    public static String getFullName(){
+    public static String getUserName(){
         return fullName;
     }
 
@@ -25,7 +25,7 @@ public class UserVerificationTest {
         UserVerificationTest.userId = userId;
     }
 
-    public static void setFullName(String fullName){
+    public static void setUserName(String fullName){
         UserVerificationTest.fullName = fullName;
     }
 }

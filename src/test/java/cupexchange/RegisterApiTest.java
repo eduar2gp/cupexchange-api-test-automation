@@ -52,16 +52,32 @@ public class RegisterApiTest extends BaseTest {
                 .as(RegisterResponse.class);
 
         // 4. Retrieve Verification Token from DB
-        try (Connection conn = DatabaseConfig.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM verificationtoken ORDER BY expirydate DESC FETCH FIRST 1 ROWS ONLY")) {
-            if (rs.next()) {
-                System.out.println("there is data");
-                token = rs.getString("token");
-                logger.info("Successfully retrieved token: {}", token);
-            }
-            else{
-                System.out.println("no more");
+        try (Connection conn = DatabaseConfig.getConnection()) {
+            // 1. Verify the connection is active and reachable (3-second timeout)
+            if (conn != null && conn.isValid(3)) {
+
+                Statement debugStmt = conn.createStatement();
+                ResultSet rsDebug = debugStmt.executeQuery("SELECT count(*) FROM public.verificationtoken");
+                if (rsDebug.next()) {
+                    System.out.println("Total rows found: " + rsDebug.getInt(1));
+                }
+                else{
+                    System.out.println("Empty verificationtoken table");
+                }
+
+                try (Statement stmt = conn.createStatement();
+                     ResultSet rs = stmt.executeQuery("SELECT * FROM public.verificationtoken ORDER BY expirydate DESC FETCH FIRST 1 ROWS ONLY")) {
+
+                    if (rs.next()) {
+                        token = rs.getString("token");
+                        System.out.println("there is data");
+                        logger.info("Successfully retrieved token: {}", token);
+                    } else {
+                        System.out.println("no more data found");
+                    }
+                }
+            } else {
+                logger.error("Connection is null or invalid before query execution.");
             }
         } catch (Exception e) {
             logger.error("Failed to retrieve verification token from the database", e);
@@ -104,7 +120,7 @@ public class RegisterApiTest extends BaseTest {
 
         UserVerificationTest.setJwtToken(response.getJwtToken());
         UserVerificationTest.setUserId(response.getId());
-        UserVerificationTest.setFullName(request.getUsername());
+        UserVerificationTest.setUserName(request.getUsername());
         System.out.println("Token: " + response.getJwtToken());
     }
 }

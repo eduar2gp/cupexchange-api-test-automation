@@ -11,7 +11,7 @@ import java.util.Properties;
 public class DatabaseConfig{
 
     private static final Properties properties = new Properties();
-    static final String config = "config.properties";
+    static final String config = "config-prod.properties";
 
     // Load the properties file when the class is first loaded
     static {

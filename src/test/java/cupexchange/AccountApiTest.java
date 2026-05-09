@@ -28,10 +28,11 @@ public class AccountApiTest extends BaseTest {
     @Order(1)
     public void addNewBpaAccount() {
         AccountRequest request = new AccountRequest();
-        request.setAccountName(UserVerificationTest.getFullName());
+        request.setAccountName(UserVerificationTest.getUserName());
         request.setBaseCurrency("CUP");
         request.setCardNumber("1234567809876543");
-        request.setPaymentGatewayId(2);
+        request.setPaymentGatewayId(3);
+//        request.setPaymentGatewayId(2); local
 
         AccountResponse response = given()
                 .header("Authorization", "Bearer " + getToken())
