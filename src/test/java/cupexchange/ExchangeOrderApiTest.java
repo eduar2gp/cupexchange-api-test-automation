@@ -59,4 +59,54 @@ public class ExchangeOrderApiTest extends BaseTest{
 
         System.out.println(response);
     }
+
+    @Test
+    @Order(3)
+    public void createLimitBuyExchangeOrder(){
+        ExchangeOrderRequest request = new ExchangeOrderRequest();
+        request.setSide("BUY");
+        request.setPairCode("USDCUP");
+        request.setType("LIMIT");
+        request.setVolume(new BigDecimal("10"));
+        request.setPrice(new BigDecimal("380"));
+        request.setUsername(UserVerificationTest.getUserName().toLowerCase());
+
+        String response = given()
+                .header("Authorization", "Bearer " + UserVerificationTest.getJwtToken())
+                .contentType(ContentType.JSON)
+                .body(request)
+                .when()
+                .post(Endpoints.CREATE_EXCHANGE_ORDER)
+                .then()
+                .statusCode(201)
+                .extract()
+                .asString();
+
+        System.out.println(response);
+    }
+
+    @Test
+    @Order(4)
+    public void createLimitSellExchangeOrder(){
+        ExchangeOrderRequest request = new ExchangeOrderRequest();
+        request.setSide("SELL");
+        request.setPairCode("USDCUP");
+        request.setType("LIMIT");
+        request.setVolume(new BigDecimal("1"));
+        request.setPrice(new BigDecimal("420"));
+        request.setUsername(UserVerificationTest.getUserName().toLowerCase());
+
+        String response = given()
+                .header("Authorization", "Bearer " + UserVerificationTest.getJwtToken())
+                .contentType(ContentType.JSON)
+                .body(request)
+                .when()
+                .post(Endpoints.CREATE_EXCHANGE_ORDER)
+                .then()
+                .statusCode(201)
+                .extract()
+                .asString();
+
+        System.out.println(response);
+    }
 }
