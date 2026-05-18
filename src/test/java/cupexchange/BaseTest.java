@@ -23,6 +23,8 @@ public class BaseTest {
     static Properties properties = new Properties();
     public static ExtentReports extent;
     public static ThreadLocal<ExtentTest> test = new ThreadLocal<>();
+    public static Long bpaGatewayId = 0L; // Placeholder, set to actual gateway ID as needed
+    public static Long zelleGatewayId = 0L; // Placeholder, set to actual gateway ID as needed
 
     @BeforeAll
     public static void setup() {
@@ -37,6 +39,8 @@ public class BaseTest {
             properties.load(input);
             // Set base URI, with fallback default
             RestAssured.baseURI = properties.getProperty("api.url", "http://localhost:8080");
+            BaseTest.bpaGatewayId = properties.getProperty("bpa.gateway.id") != null ? Long.parseLong(properties.getProperty("bpa.gateway.id")) : 0L;
+            BaseTest.zelleGatewayId = properties.getProperty("zelle.gateway.id") != null ? Long.parseLong(properties.getProperty("zelle.gateway.id")) : 0L;
         } catch (Exception e) {
             System.err.println("CRITICAL: Failed to load configuration file. Defaulting to localhost.");
             RestAssured.baseURI = "http://localhost:8080";

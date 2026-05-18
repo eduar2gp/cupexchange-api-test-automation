@@ -109,4 +109,44 @@ public class DepositApiTest extends BaseTest {
                 .then()
                 .statusCode(200);
     }
+
+    @Test
+    @Order(3)
+    public void verifySecondPendingDeposit() {
+        PendingDepositResponse response = given()
+                .header("Authorization", "Bearer " + authToken)
+                .when()
+                .get(Endpoints.GET_PENDING_DEPOSITS)
+                .then()
+                .statusCode(200)
+                .extract().as(PendingDepositResponse.class);
+
+        // Capture the first deposit to process it in the next test
+        PendingDeposit myDeposit = response.getContent().stream()
+                .toList().get(1);
+
+        this.pendingDepositId = myDeposit.getId();
+        System.out.println("Captured Deposit ID for approval: " + pendingDepositId);
+    }
+
+    @Test
+    @Order(4)
+    public void approveSecondDeposit() {
+        // Guard check: ensure we actually have an ID to approve
+        Assumptions.assumeTrue(pendingDepositId > 0, "Pending Deposit ID was not captured in previous step!");
+
+        ApproveDepositRequest request = new ApproveDepositRequest();
+        request.setTransactionId(pendingDepositId);
+        request.setAction("CONFIRM_DEPOSIT");
+        request.setReason("Verified by automation");
+
+        given()
+                .header("Authorization", "Bearer " + authToken)
+                .contentType(ContentType.JSON)
+                .body(request)
+                .when()
+                .post(Endpoints.PROCESS_TRANSACTION)
+                .then()
+                .statusCode(200);
+    }
 }

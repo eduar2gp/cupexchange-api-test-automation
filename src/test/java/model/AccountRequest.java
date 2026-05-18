@@ -10,10 +10,28 @@ import lombok.AllArgsConstructor;
 public class AccountRequest {
 
     private String baseCurrency;
-    private Integer paymentGatewayId;
+    private Long paymentGatewayId;
     private String accountId;
     private String accountName;
     private String cardNumber;
+    private String email;
+    private String phone;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getBaseCurrency() {
         return baseCurrency;
@@ -23,11 +41,11 @@ public class AccountRequest {
         this.baseCurrency = baseCurrency;
     }
 
-    public Integer getPaymentGatewayId() {
+    public Long getPaymentGatewayId() {
         return paymentGatewayId;
     }
 
-    public void setPaymentGatewayId(Integer paymentGatewayId) {
+    public void setPaymentGatewayId(Long paymentGatewayId) {
         this.paymentGatewayId = paymentGatewayId;
     }
 

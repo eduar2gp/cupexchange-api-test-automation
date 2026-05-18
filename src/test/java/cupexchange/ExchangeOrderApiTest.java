@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 public class ExchangeOrderApiTest extends BaseTest{
 
     @Test
-    @Order(1)
+    @Order(3)
     public void createMarketBuyExchangeOrder() {
         ExchangeOrderRequest request = new ExchangeOrderRequest();
         request.setSide("BUY");
@@ -37,13 +37,13 @@ public class ExchangeOrderApiTest extends BaseTest{
     }
 
     @Test
-    @Order(2)
+    @Order(4)
     public void createMarketSellExchangeOrder() {
         ExchangeOrderRequest request = new ExchangeOrderRequest();
         request.setSide("SELL");
         request.setPairCode("USDCUP");
         request.setType("MARKET");
-        request.setVolume(new BigDecimal("5"));
+        request.setVolume(new BigDecimal("10"));
         request.setUsername(UserVerificationTest.getUserName().toLowerCase());
 
         String response = given()
@@ -61,13 +61,13 @@ public class ExchangeOrderApiTest extends BaseTest{
     }
 
     @Test
-    @Order(3)
+    @Order(1)
     public void createLimitBuyExchangeOrder(){
         ExchangeOrderRequest request = new ExchangeOrderRequest();
         request.setSide("BUY");
         request.setPairCode("USDCUP");
         request.setType("LIMIT");
-        request.setVolume(new BigDecimal("10"));
+        request.setVolume(new BigDecimal("100"));
         request.setPrice(new BigDecimal("380"));
         request.setUsername(UserVerificationTest.getUserName().toLowerCase());
 
@@ -86,14 +86,14 @@ public class ExchangeOrderApiTest extends BaseTest{
     }
 
     @Test
-    @Order(4)
+    @Order(2)
     public void createLimitSellExchangeOrder(){
         ExchangeOrderRequest request = new ExchangeOrderRequest();
         request.setSide("SELL");
         request.setPairCode("USDCUP");
         request.setType("LIMIT");
-        request.setVolume(new BigDecimal("1"));
-        request.setPrice(new BigDecimal("420"));
+        request.setVolume(new BigDecimal("100"));
+        request.setPrice(new BigDecimal("480"));
         request.setUsername(UserVerificationTest.getUserName().toLowerCase());
 
         String response = given()
