@@ -9,7 +9,8 @@ import org.junit.platform.suite.api.Suite;
         WalletApiTest.class,
         AccountApiTest.class,
         DepositApiTest.class,
-        ExchangeOrderApiTest.class,
+        ExchangeLimitOrderApiTest.class,
+        ExchangeMarketOrderApiTest.class,
         WithdrawalApiTest.class
 })
 public class TestSuite {
