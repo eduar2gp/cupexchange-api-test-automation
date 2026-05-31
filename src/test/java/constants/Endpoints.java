@@ -20,4 +20,5 @@ public class Endpoints {
     public static final String PROCESS_TRANSACTION = "/api/v1/transaction/admin/process";
     public static final String ESTIMATE_ORDER_TOTAL_PRICE = "/api/v1/trade/estimate-market-order-total-price?volume={VOLUME}&side=BUY&pairCode=USDCUP";
     public static final String CREATE_EXCHANGE_ORDER = "/api/v1/trade/order";
+    public static final String EDIT_PROFILE = "/api/v1/auth/update/profile";
 }

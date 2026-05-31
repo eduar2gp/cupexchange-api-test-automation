@@ -1,5 +1,6 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.AllArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AccountResponse {
 
     private Long id;
@@ -21,6 +23,7 @@ public class AccountResponse {
     private Integer paymentGatewayId;
     private boolean provider;
     private String accountType;
+
 
     public Long getId() {
         return id;
