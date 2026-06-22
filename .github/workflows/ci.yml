@@ -5,6 +5,7 @@ on:
     branches: ["main", "master"]
   pull_request:
     branches: ["main", "master"]
+  workflow_dispatch: # Allows manual triggering from the GitHub UI
 
 jobs:
   build:
@@ -22,6 +23,4 @@ jobs:
           cache: maven
 
       - name: Build and run TestSuite only
-        # Run only the TestSuite aggregator class so CI invokes the suite explicitly
         run: mvn -B -Dtest=cupexchange.TestSuite test
-
