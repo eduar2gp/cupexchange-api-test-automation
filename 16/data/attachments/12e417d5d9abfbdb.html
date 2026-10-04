@@ -1,0 +1,36 @@
+<div>POST to https://spring-ecommerce-jzer.onrender.com/api/v1/trade/order</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;username&quot;: &quot;raleigh3u8&quot;,
+    &quot;pairCode&quot;: &quot;USDCUP&quot;,
+    &quot;side&quot;: &quot;SELL&quot;,
+    &quot;type&quot;: &quot;LIMIT&quot;,
+    &quot;price&quot;: 620,
+    &quot;volume&quot;: 1000
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYWxlaWdoM3U4IiwiaWF0IjoxNzkxMTU3MDU5LCJleHAiOjE3OTExNjA2NTl9.RRJpu0SptR83IEB2YXwTFzk2DZsCjcrfAjLE-M3GVAs-_bqGLErcfK93uux56iAVUz-SWKnOg0-IvAEEkPijLQ</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;https://spring-ecommerce-jzer.onrender.com/api/v1/trade/order&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYWxlaWdoM3U4IiwiaWF0IjoxNzkxMTU3MDU5LCJleHAiOjE3OTExNjA2NTl9.RRJpu0SptR83IEB2YXwTFzk2DZsCjcrfAjLE-M3GVAs-_bqGLErcfK93uux56iAVUz-SWKnOg0-IvAEEkPijLQ&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;username&quot;: &quot;raleigh3u8&quot;,
+    &quot;pairCode&quot;: &quot;USDCUP&quot;,
+    &quot;side&quot;: &quot;SELL&quot;,
+    &quot;type&quot;: &quot;LIMIT&quot;,
+    &quot;price&quot;: 620,
+    &quot;volume&quot;: 1000
+}&#39;
+    </div>
+

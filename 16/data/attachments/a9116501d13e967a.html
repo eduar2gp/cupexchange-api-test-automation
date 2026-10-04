@@ -1,0 +1,40 @@
+<div>POST to https://spring-ecommerce-jzer.onrender.com/api/v1/auth/update/profile</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;firstName&quot;: &quot;Jerry&quot;,
+    &quot;middleName&quot;: &quot;Jenelle&quot;,
+    &quot;lastName&quot;: &quot;Harber&quot;,
+    &quot;phone&quot;: &quot;(740) 836-1351&quot;,
+    &quot;address&quot;: &quot;Suite 382 123 Vena Camp, Wisokyfort, SD 16998&quot;,
+    &quot;countryCode&quot;: &quot;CU&quot;,
+    &quot;provinceId&quot;: 1,
+    &quot;municipalityId&quot;: 1
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYWxlaWdoM3U4IiwiaWF0IjoxNzkxMTU3MDU5LCJleHAiOjE3OTExNjA2NTl9.RRJpu0SptR83IEB2YXwTFzk2DZsCjcrfAjLE-M3GVAs-_bqGLErcfK93uux56iAVUz-SWKnOg0-IvAEEkPijLQ</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;https://spring-ecommerce-jzer.onrender.com/api/v1/auth/update/profile&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyYWxlaWdoM3U4IiwiaWF0IjoxNzkxMTU3MDU5LCJleHAiOjE3OTExNjA2NTl9.RRJpu0SptR83IEB2YXwTFzk2DZsCjcrfAjLE-M3GVAs-_bqGLErcfK93uux56iAVUz-SWKnOg0-IvAEEkPijLQ&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;firstName&quot;: &quot;Jerry&quot;,
+    &quot;middleName&quot;: &quot;Jenelle&quot;,
+    &quot;lastName&quot;: &quot;Harber&quot;,
+    &quot;phone&quot;: &quot;(740) 836-1351&quot;,
+    &quot;address&quot;: &quot;Suite 382 123 Vena Camp, Wisokyfort, SD 16998&quot;,
+    &quot;countryCode&quot;: &quot;CU&quot;,
+    &quot;provinceId&quot;: 1,
+    &quot;municipalityId&quot;: 1
+}&#39;
+    </div>
+
