@@ -5,23 +5,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Builder;
 
+import java.math.BigDecimal;
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class PaymentRequest {
 
-    private double amount;
+    private BigDecimal amount;
     private String requestType;
     private String method;
     private Long fromAccountId;
     private Long toAccountId;
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

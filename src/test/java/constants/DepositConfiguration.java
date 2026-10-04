@@ -14,23 +14,24 @@ public class DepositConfiguration {
     }
 
     // Deposit Volumes
-    public static final BigDecimal CUP_DEPOSIT_VOLUME = new BigDecimal("10000");
-    public static final BigDecimal USD_DEPOSIT_VOLUME = new BigDecimal("1000");
+    public static final BigDecimal CUP_DEPOSIT_VOLUME = new BigDecimal("50.08");
+    public static final BigDecimal USD_DEPOSIT_VOLUME = new BigDecimal("100000");
 
     // Limit Order Prices
-    public static final BigDecimal CUP_LIMIT_ORDER_BUY_PRICE = new BigDecimal("380");
-    public static final BigDecimal CUP_LIMIT_ORDER_SELL_PRICE = new BigDecimal("480");
-    public static final BigDecimal USD_LIMIT_ORDER_SELL_PRICE = new BigDecimal("480");
+    public static final BigDecimal CUP_LIMIT_ORDER_BUY_PRICE = new BigDecimal("0.0025");
+    public static final BigDecimal CUP_LIMIT_ORDER_SELL_PRICE = new BigDecimal("0.0025");
+    public static final BigDecimal USD_LIMIT_ORDER_SELL_PRICE = new BigDecimal("620");
+    public static final BigDecimal USD_LIMIT_ORDER_BUY_PRICE = new BigDecimal("616");
 
     // Market Order Volumes
-    public static final BigDecimal MARKET_ORDER_VOLUME = new BigDecimal("10");
+    public static final BigDecimal MARKET_ORDER_VOLUME = new BigDecimal("50");
 
     // Limit Order for CUP - Random Volume Configuration
-    private static final int CUP_LIMIT_ORDER_MIN_VOLUME = 12;
-    private static final int CUP_LIMIT_ORDER_MAX_VOLUME = 19;
+    private static final int CUP_LIMIT_ORDER_MIN_VOLUME = 30;
+    private static final int CUP_LIMIT_ORDER_MAX_VOLUME = 50;
 
     // Limit Order for USD - Fixed Volume
-    public static final BigDecimal USD_LIMIT_ORDER_VOLUME = new BigDecimal("100");
+    public static final BigDecimal USD_LIMIT_ORDER_VOLUME = new BigDecimal("1000");
 
     /**
      * Generates a random volume for CUP limit orders between 12 and 19
@@ -38,9 +39,7 @@ public class DepositConfiguration {
      */
     public static BigDecimal getCupLimitOrderRandomVolume() {
         Random random = new Random();
-        int randomVolume = random.nextInt(
-                (CUP_LIMIT_ORDER_MAX_VOLUME - CUP_LIMIT_ORDER_MIN_VOLUME) + 1
-        ) + CUP_LIMIT_ORDER_MIN_VOLUME;
+        int randomVolume = random.nextInt((CUP_LIMIT_ORDER_MAX_VOLUME - CUP_LIMIT_ORDER_MIN_VOLUME) + 1) + CUP_LIMIT_ORDER_MIN_VOLUME;
         return new BigDecimal(randomVolume);
     }
 
@@ -98,5 +97,9 @@ public class DepositConfiguration {
      */
     public static BigDecimal getUsdLimitOrderVolume() {
         return USD_LIMIT_ORDER_VOLUME;
+    }
+
+    public static BigDecimal getUsdLimitBuyPrice() {
+        return USD_LIMIT_ORDER_BUY_PRICE;
     }
 }

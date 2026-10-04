@@ -5,14 +5,16 @@ public class UserVerificationTest {
     private static Long userId;
     private static String fullName;
     private static Long bpaAccountId;
-    private static Long zellerAccountId;
+    private static Long zelleAccountId;
+    private static Long cupWalletId;
+    private static Long usdWalletId;
 
-    public static Long getZellerAccountId() {
-        return zellerAccountId;
+    public static Long getZelleAccountId() {
+        return zelleAccountId;
     }
 
-    public static void setZellerAccountId(Long zellerAccountId) {
-        UserVerificationTest.zellerAccountId = zellerAccountId;
+    public static void setZelleAccountId(Long zelleAccountId) {
+        UserVerificationTest.zelleAccountId = zelleAccountId;
     }
 
     // Getter to access token in other classes
@@ -48,4 +50,19 @@ public class UserVerificationTest {
         return UserVerificationTest.bpaAccountId;
     }
 
+    public static Long getCupWalletId() {
+        return cupWalletId;
+    }
+
+    public static void setCupWalletId(Long cupWalletId) {
+        UserVerificationTest.cupWalletId = cupWalletId;
+    }
+
+    public static Long getUsdWalletId() {
+        return usdWalletId;
+    }
+
+    public static void setUsdWalletId(Long usdWalletId) {
+        UserVerificationTest.usdWalletId = usdWalletId;
+    }
 }

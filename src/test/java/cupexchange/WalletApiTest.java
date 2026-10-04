@@ -38,6 +38,7 @@ public class WalletApiTest extends BaseTest {
                 .as(WalletResponse.class);
 
         System.out.println("Currency Code: " + response.getCurrencyCode());
+        UserVerificationTest.setUsdWalletId(response.getWalletId());
         newWalletRequest.setCurrencyCode("CUP");
 
         response = given()
@@ -55,5 +56,6 @@ public class WalletApiTest extends BaseTest {
                 .as(WalletResponse.class);
 
         System.out.println("Currency Code: " + response.getCurrencyCode());
+        UserVerificationTest.setCupWalletId(response.getWalletId());
     }
 }

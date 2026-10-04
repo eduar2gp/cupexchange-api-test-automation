@@ -19,8 +19,8 @@ public class ExchangeLimitOrderApiTest extends BaseTest{
         request.setSide("BUY");
         request.setPairCode("USDCUP");
         request.setType("LIMIT");
-        request.setVolume(DepositConfiguration.getCupLimitOrderRandomVolume());
-        request.setPrice(DepositConfiguration.getCupLimitBuyPrice());
+        request.setVolume(DepositConfiguration.getUsdLimitOrderVolume());
+        request.setPrice(DepositConfiguration.getUsdLimitBuyPrice());
         request.setUsername(UserVerificationTest.getUserName().toLowerCase());
 
         String response = given()

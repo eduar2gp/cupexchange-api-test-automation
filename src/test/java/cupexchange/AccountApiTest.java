@@ -1,11 +1,12 @@
 package cupexchange;
 
+import constants.DepositConfiguration;
 import constants.Endpoints;
 import io.restassured.http.ContentType;
 import model.*;
 import net.datafaker.Faker;
 import org.junit.jupiter.api.*; // Ensure this import is present
-import java.math.BigDecimal;
+
 import static io.restassured.RestAssured.given;
 
 // This ensures the same class instance is used for all tests,
@@ -69,7 +70,7 @@ public class AccountApiTest extends BaseTest {
         PaymentRequest request = new PaymentRequest();
         request.setRequestType("DEPOSIT");
         request.setMethod("BANK");
-        request.setAmount(100000L);
+        request.setAmount(DepositConfiguration.getCupDepositVolume());
         request.setFromAccountId(fromAccountId);
         request.setToAccountId(toAccountId);
 
@@ -93,7 +94,7 @@ public class AccountApiTest extends BaseTest {
 
         DepositRequest request = new DepositRequest();
         request.setType("DEPOSIT");
-        request.setAmount(new BigDecimal("100000"));
+        request.setAmount(DepositConfiguration.getCupDepositVolume());
         request.setCurrencyCode("CUP");
         request.setReferenceId(String.valueOf(paymentId));
 
@@ -128,7 +129,7 @@ public class AccountApiTest extends BaseTest {
                 .extract().as(AccountResponse.class);
 
         this.fromAccountId = response.getId();
-        UserVerificationTest.setZellerAccountId(response.getId());
+        UserVerificationTest.setZelleAccountId(response.getId());
 
         AccountResponse[] accounts = given()
                 .header("Authorization", "Bearer " + getToken())
@@ -150,7 +151,7 @@ public class AccountApiTest extends BaseTest {
         PaymentRequest request = new PaymentRequest();
         request.setRequestType("DEPOSIT");
         request.setMethod("BANK");
-        request.setAmount(1000L);
+        request.setAmount(DepositConfiguration.getUsdDepositVolume());
         request.setFromAccountId(fromAccountId);
         request.setToAccountId(toAccountId);
 
@@ -174,7 +175,7 @@ public class AccountApiTest extends BaseTest {
 
         DepositRequest request = new DepositRequest();
         request.setType("DEPOSIT");
-        request.setAmount(new BigDecimal("1000"));
+        request.setAmount(DepositConfiguration.getUsdDepositVolume());
         request.setCurrencyCode("USD");
         request.setReferenceId(String.valueOf(paymentId));
 
