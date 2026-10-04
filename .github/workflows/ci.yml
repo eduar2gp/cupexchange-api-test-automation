@@ -7,6 +7,9 @@ on:
     branches: ["main", "master"]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,17 +26,30 @@ jobs:
           cache: maven
 
       - name: Build and run TestSuite
-        # Allows workflow to continue to report generation even if tests fail
         continue-on-error: true
         run: mvn -B -Dtest=cupexchange.TestSuite test
 
-      - name: Generate Allure Report
+      - name: Get Allure History
+        uses: actions/checkout@v4
         if: always()
-        run: mvn allure:report
-
-      - name: Upload Allure Report Artifact
-        if: always()
-        uses: actions/upload-artifact@v4
+        continue-on-error: true
         with:
-          name: allure-report
-          path: target/site/allure-maven-plugin
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Allure Report Action with History
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        id: allure-report
+        with:
+          allure_results: target/allure-results
+          gh_pages: gh-pages
+          allure_history: allure-history
+
+      - name: Deploy Allure Report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
