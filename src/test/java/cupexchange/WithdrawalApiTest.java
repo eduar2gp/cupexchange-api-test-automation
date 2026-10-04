@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+
 import static io.restassured.RestAssured.given;
 
 public class WithdrawalApiTest extends BaseTest{
@@ -27,7 +29,7 @@ public class WithdrawalApiTest extends BaseTest{
         request.setToAccountId(UserVerificationTest.getBpaAccountId());
         request.setMethod("BANK");
         request.setRequestType("WITHDRAWAL");
-        request.setAmount(50);
+        request.setAmount(new BigDecimal(50));
 
         // 1. Extract as an Array
         PaymentResponse[] responses = given()
@@ -48,10 +50,10 @@ public class WithdrawalApiTest extends BaseTest{
     @Order(2)
     public void createZelleWithdrawal() {
         PaymentRequest request = new PaymentRequest();
-        request.setToAccountId(UserVerificationTest.getZellerAccountId());
+        request.setToAccountId(UserVerificationTest.getZelleAccountId());
         request.setMethod("BANK");
         request.setRequestType("WITHDRAWAL");
-        request.setAmount(50);
+        request.setAmount(new BigDecimal(50));
 
         // 1. Extract as an Array
         PaymentResponse[] responses = given()
