@@ -14,7 +14,7 @@ public class DepositConfiguration {
     }
 
     // Deposit Volumes
-    public static final BigDecimal CUP_DEPOSIT_VOLUME = new BigDecimal("50.08");
+    public static final BigDecimal CUP_DEPOSIT_VOLUME = new BigDecimal("1000000");
     public static final BigDecimal USD_DEPOSIT_VOLUME = new BigDecimal("100000");
 
     // Limit Order Prices
