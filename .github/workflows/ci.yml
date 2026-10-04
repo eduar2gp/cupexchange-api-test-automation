@@ -5,7 +5,7 @@ on:
     branches: ["main", "master"]
   pull_request:
     branches: ["main", "master"]
-  workflow_dispatch: # Allows manual triggering from the GitHub UI
+  workflow_dispatch:
 
 jobs:
   build:
@@ -22,5 +22,18 @@ jobs:
           java-version: '17'
           cache: maven
 
-      - name: Build and run TestSuite only
+      - name: Build and run TestSuite
+        # Allows workflow to continue to report generation even if tests fail
+        continue-on-error: true
         run: mvn -B -Dtest=cupexchange.TestSuite test
+
+      - name: Generate Allure Report
+        if: always()
+        run: mvn allure:report
+
+      - name: Upload Allure Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: target/site/allure-maven-plugin
