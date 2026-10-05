@@ -1,0 +1,34 @@
+<div>POST to https://spring-ecommerce-jzer.onrender.com/api/v1/payment/add</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;amount&quot;: 1000000,
+    &quot;requestType&quot;: &quot;DEPOSIT&quot;,
+    &quot;method&quot;: &quot;BANK&quot;,
+    &quot;fromAccountId&quot;: 1234,
+    &quot;toAccountId&quot;: 335
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZW1wbGVrNGsiLCJpYXQiOjE3OTEyMTI2OTgsImV4cCI6MTc5MTIxNjI5OH0.gXhYacSjCJ4ddQD3he1LuhQVCnw_G1vV-UwhRZr9mOTyLo99FiGRifSBxDvlVbHWVoCzUnTyvcEsKiQcEr-fQg</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;https://spring-ecommerce-jzer.onrender.com/api/v1/payment/add&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZW1wbGVrNGsiLCJpYXQiOjE3OTEyMTI2OTgsImV4cCI6MTc5MTIxNjI5OH0.gXhYacSjCJ4ddQD3he1LuhQVCnw_G1vV-UwhRZr9mOTyLo99FiGRifSBxDvlVbHWVoCzUnTyvcEsKiQcEr-fQg&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;amount&quot;: 1000000,
+    &quot;requestType&quot;: &quot;DEPOSIT&quot;,
+    &quot;method&quot;: &quot;BANK&quot;,
+    &quot;fromAccountId&quot;: 1234,
+    &quot;toAccountId&quot;: 335
+}&#39;
+    </div>
+
