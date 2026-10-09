@@ -1,0 +1,40 @@
+<div>POST to https://spring-ecommerce-jzer.onrender.com/api/v1/auth/update/profile</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;firstName&quot;: &quot;Eve&quot;,
+    &quot;middleName&quot;: &quot;Edward&quot;,
+    &quot;lastName&quot;: &quot;Hessel&quot;,
+    &quot;phone&quot;: &quot;(274) 732-6577&quot;,
+    &quot;address&quot;: &quot;Suite 994 464 Vilma Summit, South Michelineport, MT 94224&quot;,
+    &quot;countryCode&quot;: &quot;CU&quot;,
+    &quot;provinceId&quot;: 1,
+    &quot;municipalityId&quot;: 1
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb3NhbWFyaWFxcWUiLCJpYXQiOjE3OTE1ODIyMzIsImV4cCI6MTc5MTU4NTgzMn0.SjIQNt25qI6RkgkC0GMW3ZVeYzdmAdXthIJKrwnI5QEc3UZu8B8wqy5CB0Wt7ydqnB4cGF1fRO6Q_im0JD4kHA</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;https://spring-ecommerce-jzer.onrender.com/api/v1/auth/update/profile&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJyb3NhbWFyaWFxcWUiLCJpYXQiOjE3OTE1ODIyMzIsImV4cCI6MTc5MTU4NTgzMn0.SjIQNt25qI6RkgkC0GMW3ZVeYzdmAdXthIJKrwnI5QEc3UZu8B8wqy5CB0Wt7ydqnB4cGF1fRO6Q_im0JD4kHA&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;firstName&quot;: &quot;Eve&quot;,
+    &quot;middleName&quot;: &quot;Edward&quot;,
+    &quot;lastName&quot;: &quot;Hessel&quot;,
+    &quot;phone&quot;: &quot;(274) 732-6577&quot;,
+    &quot;address&quot;: &quot;Suite 994 464 Vilma Summit, South Michelineport, MT 94224&quot;,
+    &quot;countryCode&quot;: &quot;CU&quot;,
+    &quot;provinceId&quot;: 1,
+    &quot;municipalityId&quot;: 1
+}&#39;
+    </div>
+

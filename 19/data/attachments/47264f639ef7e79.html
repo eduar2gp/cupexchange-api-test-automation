@@ -1,0 +1,30 @@
+<div>POST to https://spring-ecommerce-jzer.onrender.com/api/v1/transaction/admin/process</div>
+
+    <h4>Body</h4>
+    <div>
+    <pre class="preformated-text">
+{
+    &quot;transactionId&quot;: 84701,
+    &quot;action&quot;: &quot;CONFIRM_DEPOSIT&quot;,
+    &quot;reason&quot;: &quot;Verified by automation&quot;
+}    </pre>
+    </div>
+
+    <h4>Headers</h4>
+    <div>
+            <div>Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiaWF0IjoxNzkxNTgyMjQwLCJleHAiOjE3OTE1ODU4NDB9.7NfBbGnSapibeFt1FMsR3cw8B4QuFtG0MuvifYF80VaIdkQV2mmxCdT3DDxo9jbj-y-nyss15qnzJOEgLdtyFg</div>
+            <div>Accept: */*</div>
+            <div>Content-Type: application/json</div>
+    </div>
+
+
+
+    <h4>Curl</h4>
+    <div>
+        curl -v -X POST &#39;https://spring-ecommerce-jzer.onrender.com/api/v1/transaction/admin/process&#39; -H &#39;Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5hZ2VyIiwiaWF0IjoxNzkxNTgyMjQwLCJleHAiOjE3OTE1ODU4NDB9.7NfBbGnSapibeFt1FMsR3cw8B4QuFtG0MuvifYF80VaIdkQV2mmxCdT3DDxo9jbj-y-nyss15qnzJOEgLdtyFg&#39; -H &#39;Accept: */*&#39; -H &#39;Content-Type: application/json&#39; -d &#39;{
+    &quot;transactionId&quot;: 84701,
+    &quot;action&quot;: &quot;CONFIRM_DEPOSIT&quot;,
+    &quot;reason&quot;: &quot;Verified by automation&quot;
+}&#39;
+    </div>
+
